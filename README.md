@@ -5,11 +5,11 @@ CRM API based on [Django](https://www.djangoproject.com) and
 [PostgreSQL](https://www.postgresql.org) for persistent storage, and
 [Kubernetes](https://kubernetes.io) for deployments.
 
-## Architecture
+## Architecture
 
 TBD
 
-## Local testing
+## Local testing
 
 We can spin up both API and db with `docker-compose`. Use this sequence of
 commands to bootstrap a local environment:
@@ -24,7 +24,7 @@ You should have now django listening on http://localhost:8000/
 
 We've added support for OpenAPI specs on `/swagger` path.
 
-## Tests
+## Tests
 
 TBD
 
@@ -32,6 +32,6 @@ TBD
 
 TBD
 
-## Author
+## Author
 
 Juan Carlos Castillo Cano <jccastillocano@gmail.com>
