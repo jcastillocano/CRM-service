@@ -7,13 +7,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('crm', '0001_initial'),
+        ("crm", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='customer',
-            name='photo',
-            field=models.ImageField(blank=True, null=True, upload_to=crm.models.customer_image_path),
+            model_name="customer",
+            name="photo",
+            field=models.ImageField(
+                blank=True, null=True, upload_to=crm.models.customer_image_path
+            ),
         ),
     ]
