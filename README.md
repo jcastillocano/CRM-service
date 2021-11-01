@@ -26,7 +26,18 @@ We've added support for OpenAPI specs on `/swagger` path.
 
 ## Tests
 
+### Unit tests
+
 TBD
+
+### Integration tests
+
+TBD
+
+### Linters
+
+ * [Black](https://black.readthedocs.io/) for python linter
+ * [Hadolint](https://github.com/hadolint/hadolint) for Dockerfile
 
 ## Contributions
 
