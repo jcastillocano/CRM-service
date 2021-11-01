@@ -30,7 +30,7 @@ We've added support for OpenAPI specs on `/swagger` path.
 
 TBD
 
-### Integration tests
+### Integration tests
 
 TBD
 
