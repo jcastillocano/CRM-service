@@ -71,11 +71,9 @@ this API using different rest methods available.
 
 ### Unit tests
 
-TBD
+Use this command for running unit tests we need to run:
 
-### Integration tests
-
-TBD
+`python manage.py test`
 
 ### Linters
 

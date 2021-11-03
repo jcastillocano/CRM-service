@@ -18,6 +18,5 @@ services:
       - "8000:8000"
     environment:
       - DEBUG=1
-      - SECRET_KEY=thisisadebuggingsecretkey
     depends_on:
       - db
