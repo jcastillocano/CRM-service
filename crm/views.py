@@ -21,11 +21,16 @@ class CustomerViewSet(viewsets.ModelViewSet):
         serializer.save(updated_by=user)
 
 
+class IsSuperUser(IsAdminUser):
+    def has_permission(self, request, view):
+        return bool(request.user and request.user.is_superuser)
+
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by("date_joined")
     serializer_class = UserSerializer
     authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated, IsAdminUser]
+    permission_classes = [IsAuthenticated & IsSuperUser]
 
     def perform_create(self, serializer):
         serializer.save(is_staff=True)
