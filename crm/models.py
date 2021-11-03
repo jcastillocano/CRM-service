@@ -3,7 +3,7 @@ from django.db import models
 
 
 def customer_image_path(instance, filename):
-    return f"uploads/{instance.id}/{filename}"
+    return f"media/uploads/{instance.first_name}/{filename}"
 
 
 # Create your models here.
@@ -19,3 +19,6 @@ class Customer(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     photo = models.ImageField(upload_to=customer_image_path, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
