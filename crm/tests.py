@@ -13,9 +13,6 @@ from crm.models import Customer
 from django.contrib.auth.models import User
 
 
-AUTH_TOKEN = "dGVzdGluZ19sb2dpbjphZG1pbjEyMw=="
-
-
 class CustomerTestCase(TestCase):
     def setUp(self):
         user = User(
