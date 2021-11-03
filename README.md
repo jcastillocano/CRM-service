@@ -7,7 +7,8 @@ CRM API based on [Django](https://www.djangoproject.com) and
 
 ## Architecture
 
-This API provides two different endpoints: *customer* and *user*.
+This API provides two different endpoints: *customer* and *user*. There is
+also a backoffice endpoint for admins to manage resources directly on web.
 
 For managing *customer* information authentication is required (user:pass
 base64 encoded in `Authorization: Bearer` header. For managing *user*
@@ -50,6 +51,11 @@ Endpoints:
  * PATCH /v1/user/<id> --> partial user update by id
  * DEELETE /v1/user/<id> --> delete user by id
  
+### Backoffice
+ 
+Django Admin site for managing Customer and Users from a web dashboard
+ 
+![Screenshot 2021-11-03 at 17 30 18](https://user-images.githubusercontent.com/185361/140158903-b12f038b-253e-4d48-a7ff-b16065777a3d.png)
 
 ## Local testing
 
