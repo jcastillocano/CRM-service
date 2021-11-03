@@ -11,7 +11,7 @@ This API provides two different endpoints: *customer* and *user*.
 
 For managing *customer* information authentication is required (user:pass
 base64 encoded in `Authorization: Bearer` header. For managing *user*
-infromation admin privileges are also required.
+information admin privileges are also required.
 
 ### Customer
 
@@ -66,6 +66,8 @@ You should have now django listening on http://localhost:8000/
 
 We've added support for OpenAPI specs on `/swagger` path. Feel free to try out
 this API using different rest methods available.
+
+![Screenshot 2021-11-03 at 17 27 31](https://user-images.githubusercontent.com/185361/140155573-c6529e47-a991-42d2-b4b0-f2e1028b3fd9.png)
 
 ## Tests
 
