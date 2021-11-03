@@ -87,6 +87,17 @@ Use this command for running unit tests we need to run:
 
  * [Black](https://black.readthedocs.io/) for python linter
  * [Hadolint](https://github.com/hadolint/hadolint) for Dockerfile
+ 
+## Deployments
+ 
+TBD: Few bits left:
+ 
+ * Nginx configuration (backoffice, static, hostnames, etc)
+ * Helm chart
+ 
+## Monitoring
+ 
+TBD: We need to export prometheus metrics on /metrics endpoint
 
 ## Contributions
 
