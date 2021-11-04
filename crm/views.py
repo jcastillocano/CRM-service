@@ -31,9 +31,3 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated & IsSuperUser]
-
-    def perform_create(self, serializer):
-        serializer.save(is_staff=True)
-
-    def perform_update(self, serializer):
-        serializer.save(is_staff=True)
