@@ -135,31 +135,11 @@ class UserTestCase(TestCase):
         self.basic_user.set_password("basic_password")
         self.basic_user.save()
 
-        self.admin_user = User(
-            email="admin@crm.com",
-            first_name="Admin",
-            last_name="User",
-            username="admin_user",
-            is_staff=True,
-            is_superuser=True,
-        )
-        self.admin_user.set_password("admin_password")
-        self.admin_user.save()
-
-        self.test_user = {
-            "email": "test_user@crm.com",
-            "username": "test_user",
-            "password": "test_password",
-            "first_name": "test_user_from_unit_test",
-            "last_name": "test_user_from_unit_test",
-            "is_superuser": True,
-        }
-
-    def test_create_user_permission_denied(self):
+    def test_get_users_permission_denied(self):
         client = APIClient()
         client.force_authenticate(user=self.basic_user)
 
-        response = self.client.post("/v1/user/", self.test_user, format="json")
+        response = self.client.get("/v1/user/")
 
         result = json.loads(response.content)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
