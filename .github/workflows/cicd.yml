@@ -64,11 +64,6 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: jccastillocano/crm-registry
-        flavor: latest=auto
-        tags: |
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
       
       - name: Log in to Docker Hub
         if: github.event_name != 'pull_request'
@@ -98,11 +93,6 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: jccastillocano/crm-registry-nginx
-        flavor: latest=auto
-        tags: |
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
       
       - name: Log in to Docker Hub
         if: github.event_name != 'pull_request'
