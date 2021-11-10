@@ -57,6 +57,8 @@ Django Admin site for managing Customer and Users from a web dashboard
  
 ![Screenshot 2021-11-03 at 17 30 18](https://user-images.githubusercontent.com/185361/140158903-b12f038b-253e-4d48-a7ff-b16065777a3d.png)
 
+To access this admin backoffice use internal port 8080.
+
 ## Local testing
 
 We can spin up both API and db with `docker-compose`. Use this sequence of
@@ -66,7 +68,8 @@ commands to bootstrap a local environment:
 1. docker-compose exec web python manage.py migrate
 1. docker-compose exec web python manage.py createsuperuser
 
-You should have now django listening on http://localhost:8000/
+You should have now django listening on http://localhost:8888/. Metrics and
+admin site are available on http://localhost:8080/.
 
 ## Swagger
 
@@ -97,7 +100,10 @@ TBD: Few bits left:
  
 ## Monitoring
  
-TBD: We need to export prometheus metrics on /metrics endpoint
+Added prometheus metrics on <domain>:8080/metrics url. 
+
+Checkout https://grafana.com/grafana/dashboards/9528 for using these metrics in
+grafana.
 
 ## Contributions
 

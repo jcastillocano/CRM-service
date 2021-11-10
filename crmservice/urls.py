@@ -37,4 +37,5 @@ urlpatterns = [
         name="schema-swagger-ui",
     ),
     path("admin/", admin.site.urls),
+    path('', include('django_prometheus.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
