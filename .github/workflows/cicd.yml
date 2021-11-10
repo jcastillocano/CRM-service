@@ -22,7 +22,7 @@ jobs:
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@master
         with:
-          dockerfile: "Dockerfile*"
+          dockerfile: "Dockerfile Dockerfile.nginx"
 
   python-test:
     needs: [python-lint, docker-lint]
