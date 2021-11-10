@@ -9,14 +9,36 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    networks:
+      - local-network
+
   web:
     build: .
     command: ./entrypoint.sh
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - 8000
     environment:
       - DEBUG=1
     depends_on:
       - db
+    networks:
+      - local-network
+
+  nginx:
+    build:
+      context: .
+      dockerfile:  Dockerfile.nginx
+      args:
+        NGINX_CONFIG: local
+    ports:
+      - 8080:8080
+      - 8888:80
+    depends_on:
+      - web
+    networks:
+      - local-network
+
+networks:
+  local-network:

@@ -1,0 +1,80 @@
+client_max_body_size 10M;
+
+server {
+    listen    8080;
+    server_name  _;
+
+    location /stub {
+        stub_status;
+    }
+
+    location /metrics {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass  http://localhost:8000/metrics;
+    }
+
+    location /static {
+        alias /opt/static;
+    }
+
+    location /media/ {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass  http://localhost:8000/media/;
+    }
+
+    location /admin/ {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass  http://localhost:8000/admin/;
+    }
+}
+
+server {
+    listen       80;
+    server_name  _;
+
+    proxy_connect_timeout 300;
+    proxy_send_timeout    300;
+    proxy_read_timeout    300;
+    send_timeout          300;
+    client_body_timeout   300;
+
+    location /static {
+        alias /opt/static;
+    }
+
+    location /metrics {
+        deny  all;
+        access_log off;
+        error_log off;
+    }
+
+    location /admin {
+        deny  all;
+        access_log off;
+        error_log off;
+    }
+
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_buffering on;
+        proxy_connect_timeout 300;
+        proxy_send_timeout    300;
+        proxy_read_timeout    300;
+        send_timeout          300;
+        client_body_timeout   300;
+        proxy_pass  http://localhost:8000/;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
