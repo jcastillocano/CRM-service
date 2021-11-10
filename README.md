@@ -95,8 +95,8 @@ Use this command for running unit tests we need to run:
  
 TBD: Few bits left:
  
- * Nginx configuration (backoffice, static, hostnames, etc)
  * Helm chart
+ * Helm commands for deploying on k8s
  
 ## Monitoring
  
