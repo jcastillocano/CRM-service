@@ -24,15 +24,6 @@ jobs:
         with:
           dockerfile: "Dockerfile"
 
-  nginx-docker-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Lint nginx Dockerfile
-        uses: hadolint/hadolint-action@master
-        with:
-          dockerfile: "Dockerfile.nginx"
-
   python-test:
     needs: [python-lint, docker-lint]
     runs-on: ubuntu-latest
