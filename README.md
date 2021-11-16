@@ -29,7 +29,7 @@ Endpoints:
  * GET /v1/customer/<id> --> get customer by id
  * PUT /v1/customer/<id> --> update customer by id
  * PATCH /v1/customer/<id> --> partial customer update by id
- * DEELETE /v1/customer/<id> --> delete customer by id
+ * DELETE /v1/customer/<id> --> delete customer by id
 
 ### User
 
@@ -49,7 +49,7 @@ Endpoints:
  * GET /v1/user/<id> --> get user by id
  * PUT /v1/user/<id> --> update user by id
  * PATCH /v1/user/<id> --> partial user update by id
- * DEELETE /v1/user/<id> --> delete user by id
+ * DELETE /v1/user/<id> --> delete user by id
  
 ### Backoffice
  
@@ -99,7 +99,7 @@ steps:
 
 1. Create namespace `kubectl create namespace crm`
 
-### Initialize postgres db
+### Initialize postgres db (for testing)
 
 NOTE: for testing purposes, for production environments use a dedidated
 postgres instance (i.e. RDS)
