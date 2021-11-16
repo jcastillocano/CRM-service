@@ -1,0 +1,9 @@
+configmap:
+  DB_NAME: crm
+  DB_USER: postgres
+  DB_HOST: postgres-postgresql
+  DEBUG: "1"
+
+secrets:
+  DB_PASSWORD: secretpassword
+  SECRET_KEY: productionsecret

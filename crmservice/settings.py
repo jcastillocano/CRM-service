@@ -29,7 +29,7 @@ def random_string_generator(size=10, chars=string.ascii_lowercase + string.digit
 
 SECRET_KEY = os.getenv("SECRET_KEY", random_string_generator(30))
 DEBUG = os.getenv("DEBUG", False)
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
