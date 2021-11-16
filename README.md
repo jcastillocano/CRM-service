@@ -93,11 +93,40 @@ Use this command for running unit tests we need to run:
  
 ## Deployments
  
-TBD: Few bits left:
- 
- * Helm chart
- * Helm commands for deploying on k8s
- 
+This repository provides a Helm chart (_k8s_ folder) to automate deployments on
+a kubernetes cluster (with LoadBalancer support). For that, please follow these
+steps:
+
+1. Create namespace `kubectl create namespace crm`
+
+### Initialize postgres db
+
+NOTE: for testing purposes, for production environments use a dedidated
+postgres instance (i.e. RDS)
+
+1. `helm repo add bitnami https://charts.bitnami.com/bitnami`
+1. `helm install postgres bitnami/postgresql -n crm --set postgresqlPassword=secretpassword,postgresqlDatabase=crm`
+
+
+### Deploy chart
+
+NOTE: provide your chart config values (check _k8s/values.yaml_ for defaults)
+as a yaml file. Then, run this command to install/update this repository:
+
+1. `helm upgrade --atomic --install crm ./k8s -f test.yaml -n crm`
+
+After that you should have your env almost ready. Last bits would be to apply
+migrations and create superuser as follows:
+
+1. `kubectl get po -n crm | grep crm-service` (take note of pod name)
+1. `kubectl exec -ti <pod_name> -n crm -- python manage.py migrate`
+1. `kubectl exec -ti <pod_name> -n crm -- python manage.py createsuperuser`
+
+After that, your service should be listening on an ALB, we can get its domain
+with `kubectl get svc -n crm`. For backoffice, it is recommended to use
+*port-forward* with `kubectl port-forward -n crm svc/crm-crm-service 8080:8080`.
+That will listen on localhost:8000 for /metrics, /admin and /stub
+
 ## Monitoring
  
 Added prometheus metrics on <domain>:8080/metrics url. 
